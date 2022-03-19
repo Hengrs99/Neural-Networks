@@ -2,7 +2,7 @@ import numpy as np
 
 class Perceptron():
     """
-    třída binárního klasifikátoru
+    třída perceptron pro binární klasifikaci
 
     Atributy
     --------
@@ -17,7 +17,7 @@ class Perceptron():
         konstruktor binárního klasifikátoru
 
         :param eta: {float} rychlost učení
-        :param epochs: {integer} počet epoch (trénovacích iterací)
+        :param epochs: {integer} počet epoch
         :param random_state: {integer} semínko generátoru náhodných 
                              čísel pro inicializaci váhových koeficientů
         """
@@ -27,16 +27,16 @@ class Perceptron():
 
     def fit(self, X, y):
         """
-        funkce pro trénování klasifikátoru na poskytntých datech
+        funkce pro trénování klasifikátoru na poskytnutých datech
 
-        :param X: {2d-array} matice vlastností trénovacích příkladů
+        :param X: {2d-array} matice vlastností tréninkových příkladů
                              shape = [n_příklady, n_vlastnosti]
-                             n_příklady: počet trénovacích příkladů
+                             n_příklady: počet tréninkových příkladů
                              n_vlastnosti: počet vlastností
-        :param y: {1d-array} vekotr skutečných tříd trénovacích příkladů
-                             shape = [n_ppříklady]
+        :param y: {1d-array} vekotr skutečných tříd tréninkových příkladů
+                             shape = [n_příklady]
         
-        :return: self objekt
+        :return: self
         """
         rgen = np.random.RandomState(self.random_state)
         self.w_ = rgen.normal(loc=0.0, scale=0.01, size=1 + X.shape[1])
@@ -56,7 +56,7 @@ class Perceptron():
         """
         funkce pro výpočet lineárního vstupu
 
-        :return: {1d-array} vektor lineárních vstupů trénovacíh příkladů
+        :return: {1d-array} vektor lineárních vstupů tréninkových příkladů
         """
         return np.dot(X, self.w_[1:]) + self.w_[0]
 
