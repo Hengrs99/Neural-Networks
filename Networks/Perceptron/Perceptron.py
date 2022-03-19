@@ -29,10 +29,10 @@ class Perceptron():
         """
         funkce pro trénování klasifikátoru na poskytnutých datech
 
-        :param X: {2d-array} matice vlastností tréninkových příkladů
-                             shape = [n_příklady, n_vlastnosti]
+        :param X: {2d-array} matice příznaků tréninkových příkladů
+                             shape = [n_příklady, n_příznaky]
                              n_příklady: počet tréninkových příkladů
-                             n_vlastnosti: počet vlastností
+                             n_příznaky: počet příznaků
         :param y: {1d-array} vekotr skutečných tříd tréninkových příkladů
                              shape = [n_příklady]
         
