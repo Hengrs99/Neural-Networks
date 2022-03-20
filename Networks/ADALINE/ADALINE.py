@@ -10,49 +10,75 @@ class ADALINE():
     Vekotr váhových koeficientů
 
     cost_ : list
-    Průměrná hodnota ztrázoté funkce SSE v každé epoše
+    Průměrná hodnota ztrátové funkce SSE v každé epoše
     """    
-    def __init__(self, eta=0.01, n_iter=50, random_state=1):
+    def __init__(self, eta=0.01, epochs=50, random_state=1):
         """
         konstruktor binárního klasifikátoru
 
         :param eta: {float} rychlost učení
         :param epochs: {integer} počet epoch
-        :param random_state: {integer} semínko generátoru náhodných 
-                             čísel pro inicializaci váhových koeficientů
+        :param random_state: {integer} semínko generátoru náhodných čísel
+        :param rgen: {RandomState} generátor náhodných čísel
         """
         self.eta = eta
-        self.n_iter = n_iter
+        self.epochs = epochs
         self.random_state = random_state
+        self.rgen = np.random.RandomState(self.random_state)
 
     def fit(self, X, y):
         """
         funkce pro trénování klasifikátoru na poskytntých datech
 
-        :param X: {2d-array} matice vlastností tréninkových příkladů
-                             shape = [n_příklady, n_vlastnosti]
-                             n_příklady: počet tréninkových příkladů
-                             n_vlastnosti: počet vlastností
+        :param X: {2d-array} matice příznaků tréninkových příkladů
+                             shape = [n_příklady, n_příznaky]
+                             n_příznaky: počet tréninkových příkladů
+                             n_příznaky: počet příznaků
         :param y: {1d-array} vekotr skutečných tříd tréninkových příkladů
-                             shape = [n_ppříklady]
+                             shape = [n_příklady]
         
         :return: self
         """
-        rgen = np.random.RandomState(self.random_state)
-        self.w_ = rgen.normal(loc=0.0, scale=0.01, size=1 + X.shape[1])
+        self.w_ = self.rgen.normal(loc=0.0, scale=0.01, size=1 + X.shape[1])
         self.cost_ = []
 
-        for _ in range(self.n_iter):
-            net_input = self.net_input(X)
-            output = self.activation(net_input)
-            errors = (y - output)
-            self.w_[1:] += self.eta * X.T.dot(errors)
-            self.w_[0] += self.eta * errors.sum()
-            cost = (errors**2).sum() / 2.0
-            self.cost_.append(cost)
-
+        for i in range(self.epochs):
+            X, y = self._shuffle(X, y)
+            cost = []
+            for xi, gt in zip(X, y):
+                cost.append(self._update_weights(xi, gt))
+            avg_cost = sum(cost) / int(len(y))
+            self.cost_.append(avg_cost)
+   
         return self
 
+    def _shuffle(self, X, y):
+        """
+        funkce pro určení náhodného pořadí dat
+        
+        :return: {1d-array} vekotr příznaků náhodného příkladu,
+                 {integer} cílová třída
+        """
+        r = self.rgen.permutation(len(y))
+
+        return X[r], y[r]
+
+    def _update_weights(self, xi, gt):
+        """
+        funkce pro aktualizaci vah podle učebního pravidla
+        
+        :param xi: {1d-array} vektor příznaků
+        :param gt: {integer} cílová třída
+
+        :return: {integer} ztrátové skóre (hodnota ztrátové funkce)
+        """
+        output = self.activation(self.net_input(xi))
+        error = (gt - output)
+        self.w_[1:] += self.eta * xi.dot(error)
+        self.w_[0] += self.eta * error
+        cost = 0.5 * error**2
+
+        return cost
 
     def net_input(self, X):
         """

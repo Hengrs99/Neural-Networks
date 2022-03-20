@@ -6,11 +6,9 @@ class Perceptron():
 
     Atributy
     --------
-    :w_ : 1d-array
-    Vekotr váhových koeficientů
+    :w_ : {1d-array} vekotr váhových koeficientů
 
-    :errors_ : list
-    Počet špatně klasifikovaných příkladů během každé epochy
+    :errors_ : {list} počet špatně klasifikovaných příkladů během každé epochy
     """
     def __init__(self, eta=0.01, epochs=50, random_state=1):
         """
@@ -50,6 +48,7 @@ class Perceptron():
                 self.w_[0] += update
                 errors += int(update != 0.0)
             self.errors_.append(errors)
+            
         return self
 
     def net_input(self, X):
