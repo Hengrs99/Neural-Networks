@@ -10,7 +10,7 @@ class MLP_NeuralNetwork():
     --------
     :eval_ : dictionary
         Slovník pro shromažďování dat k zhodnocení z každé 
-        epochy (ztrátové skóre, přesnost predikcí tréninkových a testovacích dat)
+        epochy (ztrátové skóre, přesnost predikcí trénovacích a testovacích dat)
     :random : RandomState
         Generátor náhodných čísel
     """
@@ -25,7 +25,7 @@ class MLP_NeuralNetwork():
         :param epochs : {int} počet epoch
         :param eta : {float} rychlost učení
         :param shuffle : {bool} (true) pro každou epochu zamíchá datový soubor
-        :param minibatch_size : {int} počet tréninkových příkladů v dávce
+        :param minibatch_size : {int} počet trénovacích příkladů v dávce
         :param seed : {int} semínko generátoru náhodných čísel
         """
         self.random = np.random.RandomState(seed)
@@ -64,7 +64,7 @@ class MLP_NeuralNetwork():
         """
         funkce pro výpočty dopředného šíření
 
-        :param X: {2d-array} matice tréninkových příkladů
+        :param X: {2d-array} matice trénovacích příkladů
 
         :return z_h: {2d-array} lineární vstupy neuronů skryté vrsty
         :return a_h: {2d-array} hodnoty aktivovaných neuronů skryté vsrtvy
@@ -116,8 +116,8 @@ class MLP_NeuralNetwork():
         """ 
         funkce pro trénování sítě
 
-        :param X_train: {2d-array} tréninkový datový soubor
-        :param y_train: {1d-array} vektor cílových tříd tréninkového souboru
+        :param X_train: {2d-array} trénovací datový soubor
+        :param y_train: {1d-array} vektor cílových tříd trénovacího souboru
         :param X_valid: {2d-array} validační datový soubor
         :param y_valid: {1d-array} vekotr cílových tříd validačního souboru 
         

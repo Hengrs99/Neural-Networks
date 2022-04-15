@@ -27,11 +27,11 @@ class Perceptron():
         """
         funkce pro trénování klasifikátoru na poskytnutých datech
 
-        :param X: {2d-array} matice příznaků tréninkových příkladů
+        :param X: {2d-array} matice příznaků trénovacích příkladů
                              shape = [n_příklady, n_příznaky]
-                             n_příklady: počet tréninkových příkladů
+                             n_příklady: počet trénovacích příkladů
                              n_příznaky: počet příznaků
-        :param y: {1d-array} vekotr skutečných tříd tréninkových příkladů
+        :param y: {1d-array} vekotr skutečných tříd trénovacích příkladů
                              shape = [n_příklady]
         
         :return: self
@@ -55,7 +55,7 @@ class Perceptron():
         """
         funkce pro výpočet lineárního vstupu
 
-        :return: {1d-array} vektor lineárních vstupů tréninkových příkladů
+        :return: {1d-array} vektor lineárních vstupů trénovacích příkladů
         """
         return np.dot(X, self.w_[1:]) + self.w_[0]
 

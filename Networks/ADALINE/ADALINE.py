@@ -30,11 +30,11 @@ class ADALINE():
         """
         funkce pro trénování klasifikátoru na poskytntých datech
 
-        :param X: {2d-array} matice příznaků tréninkových příkladů
+        :param X: {2d-array} matice příznaků trénovacích příkladů
                              shape = [n_příklady, n_příznaky]
-                             n_příznaky: počet tréninkových příkladů
+                             n_příznaky: počet trénovacích příkladů
                              n_příznaky: počet příznaků
-        :param y: {1d-array} vekotr skutečných tříd tréninkových příkladů
+        :param y: {1d-array} vekotr skutečných tříd trénovacích příkladů
                              shape = [n_příklady]
         
         :return: self
@@ -84,7 +84,7 @@ class ADALINE():
         """
         funkce pro výpočet lineárního vstupu
 
-        :return: {1d-array} vektor lineárních vstupů tréninkových příkladů
+        :return: {1d-array} vektor lineárních vstupů trénovacích příkladů
         """
         return np.dot(X, self.w_[1:]) + self.w_[0]
 
@@ -93,7 +93,7 @@ class ADALINE():
         funkce pro aplikaci lineární aktivační funkce na lineární vstup
 
         :return: {1d-array} vektor modifikovaných lineárních vstupů 
-                            tréninkových příkladů (v tomto případě beze změny)
+                            trénovacích příkladů (v tomto případě beze změny)
         """
         return X
 
