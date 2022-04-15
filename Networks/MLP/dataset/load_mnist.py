@@ -26,16 +26,13 @@ def visualize_img(img_arr):
 
 
 X_train, y_train = load_mnist('train')
-# print(f'Rows: {X_train.shape[0]}, columns: {X_train.shape[1]}')
+print(f'Rows: {X_train.shape[0]}, columns: {X_train.shape[1]}')
 
 X_test, y_test = load_mnist('t10k')
-# print(f'Rows: {X_test.shape[0]}, columns: {X_test.shape[1]}')
+print(f'Rows: {X_test.shape[0]}, columns: {X_test.shape[1]}')
 
 np.savez_compressed('mnist_scaled.npz', 
                     X_train=X_train,
                     y_train=y_train,
                     X_test=X_test,
                     y_test=y_test)
-
-# mnist = np.load('mnist_scaled.npz')
-# X_train, y_train, X_test, y_test = [mnist[f] for f in ['X_train', 'y_train', 'X_test', 'y_test']]
