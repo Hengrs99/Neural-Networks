@@ -6,7 +6,7 @@ class Perceptron():
 
     Atributy
     --------
-    :w_ : {1d-array} vekotr váhových koeficientů
+    :w_ : {1d-array} vektor váhových koeficientů
 
     :errors_ : {list} počet špatně klasifikovaných příkladů během každé epochy
     """
@@ -16,7 +16,7 @@ class Perceptron():
 
         :param eta: {float} rychlost učení
         :param epochs: {integer} počet epoch
-        :param random_state: {integer} semínko generátoru náhodných 
+        :param random_state: {integer} seed generátoru náhodných 
                              čísel pro inicializaci váhových koeficientů
         """
         self.eta = eta
@@ -31,7 +31,7 @@ class Perceptron():
                              shape = [n_příklady, n_příznaky]
                              n_příklady: počet trénovacích příkladů
                              n_příznaky: počet příznaků
-        :param y: {1d-array} vekotr skutečných tříd trénovacích příkladů
+        :param y: {1d-array} vektor skutečných tříd trénovacích příkladů
                              shape = [n_příklady]
         
         :return: self

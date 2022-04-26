@@ -2,12 +2,12 @@ import numpy as np
 
 class ADALINE():
     """
-    třída adaptviního lineárního neuronu (ADALINE) pro binární klasifikaci
+    třída adaptiviního lineárního neuronu (ADALINE) pro binární klasifikaci
 
     Atributy
     --------
     :w_ : 1d-array
-    Vekotr váhových koeficientů
+    Vektor váhových koeficientů
 
     cost_ : list
     Průměrná hodnota ztrátové funkce SSE v každé epoše
@@ -18,7 +18,7 @@ class ADALINE():
 
         :param eta: {float} rychlost učení
         :param epochs: {integer} počet epoch
-        :param random_state: {integer} semínko generátoru náhodných čísel
+        :param random_state: {integer} seed generátoru náhodných čísel
         :param rgen: {RandomState} generátor náhodných čísel
         """
         self.eta = eta
@@ -28,13 +28,13 @@ class ADALINE():
 
     def fit(self, X, y):
         """
-        funkce pro trénování klasifikátoru na poskytntých datech
+        funkce pro trénování klasifikátoru na poskytnutých datech
 
         :param X: {2d-array} matice příznaků trénovacích příkladů
                              shape = [n_příklady, n_příznaky]
                              n_příznaky: počet trénovacích příkladů
                              n_příznaky: počet příznaků
-        :param y: {1d-array} vekotr skutečných tříd trénovacích příkladů
+        :param y: {1d-array} vektor skutečných tříd trénovacích příkladů
                              shape = [n_příklady]
         
         :return: self
@@ -56,7 +56,7 @@ class ADALINE():
         """
         funkce pro určení náhodného pořadí dat
         
-        :return: {1d-array} vekotr příznaků náhodného příkladu,
+        :return: {1d-array} vektor příznaků náhodného příkladu,
                  {integer} cílová třída
         """
         r = self.rgen.permutation(len(y))

@@ -4,7 +4,7 @@ import sys
 
 class MLP_NeuralNetwork():
     """ 
-    třída dopředné MLP sítě pro multinomální klasifikaci
+    třída dopředné MLP sítě pro multinomiální klasifikaci
 
     Atributy
     --------
@@ -20,13 +20,13 @@ class MLP_NeuralNetwork():
         """
         konstrukotr MLP
 
-        :param n_hidden : {int} počet neuronů ve skryté vsrstvě  
+        :param n_hidden : {int} počet neuronů ve skryté vrstvě  
         :param l2 : {float} hondonta lambda pro L2 regularizaci (0 = bez L2)
         :param epochs : {int} počet epoch
         :param eta : {float} rychlost učení
-        :param shuffle : {bool} (true) pro každou epochu zamíchá datový soubor
+        :param shuffle : {bool} (true) pro každou epochu zamíchá pořadí dat
         :param minibatch_size : {int} počet trénovacích příkladů v dávce
-        :param seed : {int} semínko generátoru náhodných čísel
+        :param seed : {int} seed generátoru náhodných čísel
         """
         self.random = np.random.RandomState(seed)
         self.n_hidden = n_hidden
@@ -119,7 +119,7 @@ class MLP_NeuralNetwork():
         :param X_train: {2d-array} trénovací datový soubor
         :param y_train: {1d-array} vektor cílových tříd trénovacího souboru
         :param X_valid: {2d-array} validační datový soubor
-        :param y_valid: {1d-array} vekotr cílových tříd validačního souboru 
+        :param y_valid: {1d-array} vektor cílových tříd validačního souboru 
         
         :return: self
         """
